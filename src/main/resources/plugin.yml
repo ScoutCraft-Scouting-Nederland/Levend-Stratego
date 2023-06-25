@@ -1,0 +1,30 @@
+name: ${project.name}
+version: ${project.version}
+main: nl.scoutcraft.levendstratego.LevendStratego
+api-version: 1.16
+depend: [ SlimeWorldManager, EagleServer ]
+softdepend: [ PlaceholderAPI, NetworkManager, LuckPerms ]
+author: Daniel12321
+description: Levend Stratego minigame voor ScoutCraft.
+website: https://scoutcraft.nl
+
+commands:
+  forcestart:
+    usage: /<command>
+    permission: scoutcraft.levendstratego.admin
+  global:
+    usage: /<command> <message>
+    permission: scoutcraft.levendstratego.player
+    aliases: [g, algemeen, all, a]
+  lang:
+    usage: /<command> <language> [country] [region]
+    permission: scoutcraft.levendstratego.player
+    aliases: [language, locale]
+
+permissions:
+  scoutcraft.levendstratego.admin:
+    description: Gives access to all LevendStratego admin commands
+    default: op
+  scoutcraft.levendstratego.player:
+    description: Gives access to all LevendStratego player commands
+    default: true

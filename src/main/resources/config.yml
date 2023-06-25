@@ -1,0 +1,137 @@
+
+# The main language used in the game (nl, en, ...)
+language: "nl"
+
+# The bungeecord name of the hub server (Players are sent to this server after a game, right before the server restarts)
+hub_server: "hub"
+
+# The spawn point of the game lobby
+lobby_spawn: "ls_lobby:-6.5:68:-5.5:-90"
+
+# The delay between uses of the spectate/join hotbar button
+lobby_button_delay_seconds: 3
+
+# --- Launch pads --- #
+# Launchpads are active during the lobby state and the game state (not duting the flag hiding state)
+# The actual launchpad material (OAK_PRESSURE_PLATE, BIRCH_PRESSURE_PLATE, STONE_PRESSURE_PLATE, ACACIA_PRESSURE_PLATE, JUNGLE_PRESSURE_PLATE, SPRUCE_PRESSURE_PLATE, WARPED_PRESSURE_PLATE, CRIMSON_PRESSURE_PLATE, DARK_OAK_PRESSURE_PLATE, LIGHT_WEIGHTED_PRESSURE_PLATE, LIGHT_WEIGHTED_PRESSURE_PLATE, HEAVY_WEIGHTED_PRESSURE_PLATE, other blocks are experimental, in general, the player needs to stand in the block)
+launchpad_plate: "HEAVY_WEIGHTED_PRESSURE_PLATE"
+
+# Block that should be beneath the launchpad itself
+launchpad_block: "SEA_LANTERN"
+
+# The algorith used to fill teams. (Options: "random", "party")
+teampicker: "party"
+
+# The algorith used to choose a map. (Options: "random", "size")
+mappicker: "size"
+
+# All main game settings
+game:
+  general:
+    players_min: 10 # Minimum amount of players to start the game without the use of the force start command.
+    players_max: 40 # Maximum amount of player for the game.
+    rounds_to_win: 3 # First team to win this amount of rounds wins the game.
+    lobby_countdown_seconds: 60 # Countdown in seconds after player minimum is reached for the game to start.
+    lobby_countdown_map_seconds: 8 # Number of seconds before start to show the map to the players in the lobby.
+    party_id_request_seconds: 1 # Number of seconds before start to request all player party id's. (Only used when using the party team picker)
+    flaghiding_prepare_seconds: 5 # Number of seconds before the flaghiding countdown starts. (Players will not be able to move during this time)
+    flaghiding_seconds: 60 # Number of seconds for the players to hide their flag. (If the flag is not hidden, it will be placed randomly on a spawnpoint)
+    flagrehiding_seconds: 60 # Number of seconds of the player to hide their flag, after they took it back from an opponent. (If the flag is not hidden, it will be placed where the player is standing)
+  death:
+    respawn_seconds: 8 # Number of seconds before respawning.
+    invulnerability_seconds: 7 # Number of seconds after respawning, in which the player can not be killed.
+  deck: # Decks are the total amount of cards for the players to use each round. You can set your own configuration of cards in a set, and the times this set has to be added to form a deck. The sets are shuffled and then added in order to form the deck.
+    cards: # In general, every card lower in the list, can kill cards higher in this list. (Changing the order of the list will not change the strength of the card)
+      spy: 1 # Can kill the marshall. Is killed by everyone, except the marshall.
+      scout: 3 # Can run extra fast.
+      miner: 2 # Can defeat the bomb.
+      sergeant: 3
+      lieutenant: 2
+      captain: 2
+      major: 2
+      colonel: 1
+      general: 1
+      marshall: 1 # Is strongest, but is killed when attacking a bomb, or when killed by a spy.
+      bomb: 2 # Kills everyone, except the miner, but cannot attack anyone.
+
+# The pages of the rulebook given to players in the lobby
+rulebook:
+  - "=[ Levend Stratego ]=\n\nWelkom in Levend Stratego!\n\nIn dit boek staan alle regels van het spel.\n\n\n\n\n\n\nVeel plezier!"
+  - "----=[ Globaal ]=----\nElke ronde van het spel bestaat uit 2 fases: de vlag verstop fase en de hoofdfase. In de vlag verstop fase krijgt 1 persoon de vlag om te verstoppen. Om te winnen moet je de tegenstanders vlag stelen, of alle kaarten van de tegenstand op spelen."
+  - "----=[ Globaal ]=----\n\nHet team dat als eerste 3 ronden heeft gewonnen, wint het spel."
+  - "----=[ Rangen ]=----\n\nEr zijn 11 rangen:\n#10 Maarschalk\n#9: Generaal\n#8: Kolonel\n#7: Majoor\n#6: Kapitein\n#5: Luitenant\n#4: Sergeant\n#3: Mineur\n#2: Verkenner\n#1: Spion\n#X: Bom"
+  - "----=[ Rangen ]=----\n\nEen hogere rang verslaat een lagere rang. Er zijn ook 2 speciale rangen: Spion  en bom. De spion kan alleen de maarschalk verslaan, en de bom kan alleen door de mineur worden verslagen maar kan zelf niet slaan of de vlag stelen."
+  - "-----=[ Vlag ]=-----\n\nTijdens het spel moet je zoeken naar de vlag van het andere team. Als je deze gevonden heb kan je de vlag oppakken en in je eigen basis plaatsen. Dan heb je de ronde gewonnen. Pas op, op het moment dat je de vlag oppakt, weet iedereen dit!"
+
+# All settings for each map
+map:
+  <MapName>:
+    slime_name: "world" # Name of the world in the config of Slime World Manager.
+    time_ticks: 5000 # The time the world will be set to.
+    deck_sets: 2 # The number of sets will be put in each deck.
+    min_players: 10 # The minimum number of players required to guarantee this map.
+    max_players: 20 # The maximum number of players required to guarantee this map.
+    red:
+      base_area: "world:X1_X2:Y1_Y2:Z1_Z2" # The area the enemies flag can be placed in to win the round (cuboid, with X1 as minimum, X2 as maximum, Y1 as minimum, ...)
+      flag_area: "world:X1_X2:Y1_Y2:Z1_Z2" # The area the own flag can be hidden in (cuboid, with X1 as minimum, X2 as maximum, Y1 as minimum, ...)
+      spawns:
+        - "world:x:y:z[:pitch][:yaw]" # Spawnpoint of a player. Pitch and yaw are optional (when using the yaw, you have to set a pitch)
+        - "world:x:y:z[:pitch][:yaw]"
+        - "world:x:y:z[:pitch][:yaw]"
+    blue:
+      base_area: "world:X1_X2:Y1_Y2:Z1_Z2"
+      flag_area: "world:X1_X2:Y1_Y2:Z1_Z2"
+      spawns:
+        - "world:x:y:z[:pitch][:yaw]"
+        - "world:x:y:z[:pitch][:yaw]"
+        - "world:x:y:z[:pitch][:yaw]"
+    spectator:
+      spawn: "world:x:y:z[:pitch][:yaw]"
+
+  "De Zeven Provinciën":
+    slime_name: "ls_pirateship"
+    time_ticks: 5000
+    deck_sets: 2
+    min_players: 8
+    max_players: 15
+    red:
+      base_area: "ls_pirateship:-133_-133:86_86:22_22"
+      flag_area: "ls_pirateship:-1000_1000:0_256:-1000_1000"
+      spawns:
+        - "ls_pirateship:-123.5:86:30.5:135"
+        - "ls_pirateship:-132.5:85:30.5:-135"
+        - "ls_pirateship:-132.5:86:16.5:-45"
+        - "ls_pirateship:-123.5:86:15.5:45"
+    blue:
+      base_area: "ls_pirateship:-44_-44:86_86:22_22"
+      flag_area: "ls_pirateship:-1000_1000:0_256:-1000_1000"
+      spawns:
+        - "ls_pirateship:-53.5:87:13.5:0"
+        - "ls_pirateship:-49.5:87:14.5:0"
+        - "ls_pirateship:-42.5:87:17.5:45"
+        - "ls_pirateship:-42.5:87:27.5:135"
+        - "ls_pirateship:-49.5:87:30.5:180"
+        - "ls_pirateship:-53.5:87:31.5:180"
+    spectator:
+      spawn: "ls_pirateship:-94.5:85:14.5:0"
+
+  Mystico:
+    slime_name: "ls_mystico"
+    time_ticks: 15000
+    deck_sets: 3
+    min_players: 16
+    max_players: 40
+    red:
+      base_area: "ls_mystico:-148_-147:52_52:-5_-4"
+      flag_area: "ls_mystico:-1000_-25:0_108:-1000_1000"
+      spawns:
+        - "ls_mystico:-141.5:52:8.5:180"
+        - "ls_mystico:-141.5:52:-16.5:0"
+    blue:
+      base_area: "ls_mystico:145_146:52_52:-7_-6"
+      flag_area: "ls_mystico:25_1000:0_108:-1000_1000"
+      spawns:
+        - "ls_mystico:135.5:52:4.5:180"
+        - "ls_mystico:135.5:52:-16.5:0"
+    spectator:
+      spawn: "ls_mystico:1.5:55:-4.0:0"
