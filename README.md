@@ -36,6 +36,12 @@ We have three maps available for the Levend Stratego gamemode. You can download 
 ### Slime World Manager
 The plugins only supports the slime world manager format for loading worlds. This is a very fast method of loading minigame worlds. To learn more about SWM, see: [Github SWM](https://github.com/Paul19988/Advanced-Slime-World-Manager)
 
+## Integration with Eagle
+Levend Stratego is at the moment, tightly integrated with ScoutCraft's Eagle plugins. Eagle is a set of plugins for the server, proxy and a library. You have to install the full package to get it working. With some work it should be possible to make it (mostly) stand-alone. Eagle supports, among other things:
+- Parties
+- Database management
+- Status updates for NPS's in the lobby
+
 ## Developing
 ### Contributing
 As the ScoutCraft project has officially ended, we don't update our resources anymore on regular basis. That said, we do monitor the repositories and are open for PR's and issues.
@@ -44,6 +50,7 @@ As the ScoutCraft project has officially ended, we don't update our resources an
 If you want to add or change something, we suggest the following things to change:
 - Make a fork where Eagle is optional for the gamemode (or a plugin which is 1 .jar)
 - Make version which works with normal worlds.
+- Make a very good tutorial on how to set up.
 
 ### Reporting Bugs
 We do not update our plugins on a regular basis. That said, ff an issue is critical, we will look into a solution. You are welcome to make a bug report.
